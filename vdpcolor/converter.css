@@ -1,0 +1,23 @@
+.colorBox {
+    float: left;
+    margin-bottom: 15px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.inputBox {
+    height: 1.75em;
+    width: 1.75em;
+    background-color: violet;
+    clear: both;
+}
+
+.outputBox {
+    height: 3.0em;
+    width: 5.0em;
+    color: #69d0ea;
+    clear: unset;
+}
+
+table {
+	border: 1px solid;
+}

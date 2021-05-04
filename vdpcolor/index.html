@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            24bit to 9-bit color converter (Genesis / Mega Drive color)
+        </title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link href="../style.css" rel="stylesheet">
+        <link href="converter.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>
+            <img src="favicon.png"/>
+            24-bit to 9-bit color converter / preview
+        </h1>
+        <p>
+            Converts 24-bit (format: <i>#RRGGBB</i>) color, to 9-bit 'VDP color' used by the Sega Mega Drive / Genesis.
+        </p>
+        <p>
+            Input format: hexadeicmal number, eg. #27a427, 0x6f0a0a or 627cb9.
+        </p>
+        <div class="form">
+
+            <!-- <label for="hexField"> Color input:</label> -->
+            <div class="colorBox inputBox"></div>
+            <input id="hexField" class="hexField" type="text" type="submit">
+            
+            <input class="hexSubmit" type="submit" value="Convert color">
+        </div>
+        <div class="output">
+            <h3>Output:</h3>
+            <p class="hexOutput">Converted (9-bit): none</p>
+            <p class="output24Bit">Re-converted (24-bit): none</p>
+            <div class="colorBox outputBox"></div>
+        </div>
+        <script src="script.js"></script>
+        <!-- TODO: use node module instead (avoid third party cookies from 'unpkg.com') -->
+        <script src="https://unpkg.com/vanilla-picker@2"></script>
+        <script type="module" src="picker.js"></script>
+        <h2>
+            <!-- listen, i'm not a web dev, so i'll use as many '</br>'s as i like! (At least it works) -->
+            </br></br></br>More information
+        </h2>
+        <p>
+            Converting 'simulates' the behaviour of the <b><code>RGB24_TO_VDPCOLOR</code></b> macro from 
+            <a href="https://github.com/Stephane-D/SGDK">SGDK</a>, and creates a 2-byte number (formatted as: <code>0x0BRG</code>) from a 3-byte number (formatted <code>0xRRGGBB</code>). 
+        </p>
+        <p>
+            As you can see from the difference in size, the converted number looses a fair bit of information, and the converted color may (or, more likely, will) end up as a different
+            color from the one specified as input.   
+        </p>
+        <p>
+            The 're-converting' from 9-bit to 24-bit uses this table (<a href="https://segaretro.org/Sega_Mega_Drive/Palettes_and_CRAM#Format">from Sega Retro<a/>):
+        </p>
+        <table>
+            <tbody>
+                <tr>
+                    <th>3-bit value</th>
+                    <th>Nybble value</th>
+                    <th>Brightness (0-255)</th>
+                </tr>
+                <tr>
+                    <td>000</td>
+                    <td>0</td>
+                    <td>0 ($00)</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>2</td>
+                    <td>52 ($34)</td>
+                </tr>
+                <tr>
+                    <td>010</td>
+                    <td>4</td>
+                    <td>87 ($57)</td>
+                </tr>
+                <tr>
+                    <td>011</td>
+                    <td>6</td>
+                    <td>116 ($74)</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>8</td>
+                    <td>144 ($90)</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>A</td>
+                    <td>172 ($AC)</td>
+                </tr>
+                <tr>
+                    <td>110</td>
+                    <td>C</td>
+                    <td>206 ($CE)</td>
+                </tr>
+                <tr>
+                    <td>111</td>
+                    <td>E</td>
+                    <td>255 ($FF)</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            (E.g. 0xe00 -> 0x0000ff or 0xc64 -> 0x5774ce)
+        </p>
+    </body>
+</html>
