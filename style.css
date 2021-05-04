@@ -1,0 +1,27 @@
+@media (orientation: landscape) {
+	body {
+		margin-left: 20%;
+		margin-right: 20%;
+	}
+}
+
+@media (orientation: portrait) {
+	body {
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	background-color: #f0f0f0;;
+}
+
+code {
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-color: rgb(192, 192, 192);
+}
