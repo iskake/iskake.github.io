@@ -5,15 +5,16 @@
 }
 
 .inputBox {
-    height: 1.75em;
-    width: 1.75em;
+    height: 1.7em;
+    width: 1.7em;
     background-color: violet;
     clear: both;
+    margin-right: 5px;
 }
 
 .outputBox {
     height: 3.0em;
-    width: 5.0em;
+    width: 7.5em;
     color: #69d0ea;
     clear: unset;
 }
