@@ -11,4 +11,5 @@ picker.onChange = function(color) {
 
 picker.onDone = function(color) {
     inputField.value = color.hex.slice(0, color.hex.length - 2);
+    convertColor();
 };
