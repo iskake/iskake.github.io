@@ -1,7 +1,6 @@
 // TODO: use node module instead (avoid third party cookies from 'unpkg.com')
 // import Picker from 'vanilla-picker';
 
-var colorBox = document.querySelector('.colorBox.inputBox');
 var inputField = document.querySelector('.hexField');
 var picker = new Picker(colorBox);
 

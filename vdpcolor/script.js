@@ -3,13 +3,18 @@ const hexSubmit = document.querySelector(".hexSubmit");
 const hexOutput = document.querySelector(".hexOutput");
 const output24Bit = document.querySelector(".output24Bit");
 const outputBox = document.querySelector(".colorBox.outputBox");
+var colorBox = document.querySelector('.colorBox.inputBox');
 
 hexField.addEventListener("keydown", function f(e) {
     if ((e && e.keyCode == 13) || e == 0) {
         convertColor();
+        changeBoxColor(hexField.value);
     }
 });
-hexSubmit.addEventListener("click", convertColor);
+hexSubmit.addEventListener("click", function f(){
+    convertColor();
+    changeBoxColor(hexField.value);
+});
 
 function convertColor() {
     let val = String(hexField.value);
@@ -120,3 +125,7 @@ function VDPColorToRGB24(color) {
     hexOutput.textContent = "Invalid input!";
     output24Bit.textContent = "Must consist of 1 to 6 characters (excluding. \'0x\' and \'#\')";
  }
+
+ function changeBoxColor(color) {
+    colorBox.style.background = color.toString();
+}
