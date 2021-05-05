@@ -63,16 +63,10 @@ function VDPColorToRGB24(color) {
 
     let b9Nibble = [b, g, r];
 
-    // console.log(toHex(color));
-    // console.log(toHex(b));
-    // console.log(toHex(g));
-    // console.log(toHex(r));
-
     //               R  G  B
     let b24Nibble = [0, 0, 0];
     
     for (i = 0; i < b9Nibble.length; i++) {
-        console.log("9bit (id: " + i + "): " + toHex(b9Nibble[i]));
         switch (b9Nibble[i]) {
             // From this table: https://segaretro.org/Sega_Mega_Drive/Palettes_and_CRAM#Format
             case 0x0:
@@ -102,12 +96,7 @@ function VDPColorToRGB24(color) {
             default:
                 throw "something happened lol"; // Only the best error handling around here!
         }
-        console.log("24bit (id: " + i + "): " + toHex(b24Nibble[i]));
     }
-
-    // console.log(toHex(b24Nibble[0]));
-    // console.log(toHex(b24Nibble[1]));
-    // console.log(toHex(b24Nibble[2]));
 
     // Opposite of b9Nibble (bgr)
     return ((b24Nibble[2] << 16) + (b24Nibble[1] << 8) + b24Nibble[0]);
