@@ -46,7 +46,8 @@ function convertColor() {
 
     hexOutput.textContent = "Converted (9-bit): 0x" + toHex(input) + " (decimal " + input + ")";
     output24Bit.textContent = "Re-converted (24-bit): 0x" + toHex(in2);
-    outputBox.style.backgroundColor = "#" + (toHex(in2).length != 6 ? (toHex(in2).length === 2 ? "0000" : "00") : "") + toHex(in2) + "ff";
+    console.log(toHex(in2))
+    outputBox.style.backgroundColor = "#" + (toHex(in2) === "0" ? "000000" : (toHex(in2).length != 6 ? (toHex(in2).length === 2 ? "0000" : "00") : "") + toHex(in2)) + "ff";
 }
 
 // From 'pal.h' in SGDK
