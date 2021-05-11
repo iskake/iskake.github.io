@@ -58,8 +58,8 @@ function RGB24ToVDPColor(color) {
 // Probably more complex than it needs to be... 
 function VDPColorToRGB24(color) {
     let b = color >> 8;
-    let g = (color - (b << 8)) >> 4;
-    let r = ((color - (b << 8))) - (g << 4);
+    let g = (color & 0x0F0) >> 4;
+    let r = color & 0x00F;
 
     let b9Nibble = [b, g, r];
 
